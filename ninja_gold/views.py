@@ -48,6 +48,8 @@ def process_money(request):
             texto = (f"Ganas {juega} monedas en la {opc_for.upper()} a las {hora} wohooe :D")
             color = "verde"
         else:
+            request.session['cochinito']+=juega
+            print(request.session['cochinito'])
             texto=(f"PIERDES {juega} monedas en la {opc_for.upper()} a las {hora} :( ")
             color="rojo"
                 

@@ -10,31 +10,31 @@
 
     <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
     <script src="{% static 'fontawesome_free/js/all.min.js' %}"></script>
-    
-   
+
+
 
 </head>
 
 
 <body>
-    <script src="{% static 'core/js/mi.js' %}"></script> 
-    
+    <script src="{% static 'core/js/mi.js' %}"></script>
+
     <div class="titulo">
         <h2>NINJA GOLD (intento {{request.session.jugadas}})</h2>
     </div>
 
-    <div id="monedas"> 
+    <div id="monedas">
         <form action=''>
             {% csrf_token %}
             <label for="coins">Tus monedas:</label>
-            <i class="fas fa-coins"></i> 
+            <i class="fas fa-coins fa-lg"></i>
             <input type="text" id="coins" name="coins" value={{request.session.cochinito}}><br><br>
         </form>
     </div>
 
 
     <div class="opciones">
-        <h2>GRANJA <i class="fas fa-tractor"></i></h2>
+        <h2>GRANJA <i class="fas fa-tractor fa-lg"></i></h2>
         <p> Gana entre 10 y 20 monedas</p>
         <br>
         <form action='/process_money' method='post'>
@@ -45,7 +45,7 @@
     </div>
 
     <div class="opciones">
-        <h2>CUEVA <i class="fas fa-caret-up"></i></h2>
+        <h2>CUEVA <i class="fas fa-caret-up fa-lg"></i></h2>
         <p> Gana entre 5 y 10 monedas</p>
         <br>
         <form action='/process_money' method='post'>
@@ -56,7 +56,7 @@
     </div>
 
     <div class="opciones">
-        <h2>CASA <i class="fas fa-house-user"></i></h2>
+        <h2>CASA <i class="fas fa-house-user fa-lg"></i></h2>
         <p> Gana entre 2 y 5 monedas</p>
         <br>
         <form action='/process_money' method='post'>
@@ -67,7 +67,7 @@
     </div>
 
     <div class="opciones">
-        <h2>CASINO <i class="fas fa-dice"></i></h2>
+        <h2>CASINO <i class="fas fa-dice fa-lg"></i></h2>
         <p> Gana/pierde entre 0 y 50 monedas</p>
         <br>
         <form action='/process_money' method='post'>
@@ -78,9 +78,11 @@
     </div>
 
     <div class="reset">
-        <button type="button" onclick="resetear()">
-            <a href="reset">Resetear</a>
-        </button>
+        <a href="reset">
+            <button type="button" href="reset">
+            Resetear
+            </button>
+        </a>
     </div>
 
 
