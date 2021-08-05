@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+    <script src="{% static 'fontawesome_free/js/all.min.js' %}"></script>
+    
+   
+
+</head>
+
+
+<body>
+    <script src="{% static 'core/js/mi.js' %}"></script> 
+    
+    <div class="titulo">
+        <h2>NINJA GOLD (intento {{request.session.jugadas}})</h2>
+    </div>
+
+    <div id="monedas"> 
+        <form action=''>
+            {% csrf_token %}
+            <label for="coins">Tus monedas:</label>
+            <i class="fas fa-coins"></i> 
+            <input type="text" id="coins" name="coins" value={{request.session.cochinito}}><br><br>
+        </form>
+    </div>
+
+
+    <div class="opciones">
+        <h2>GRANJA <i class="fas fa-tractor"></i></h2>
+        <p> Gana entre 10 y 20 monedas</p>
+        <br>
+        <form action='/process_money' method='post'>
+            {% csrf_token %}
+            <input type='hidden' name='opcion' value='granja'>
+            <button type='submit'>Farmea!!!</button>
+        </form>
+    </div>
+
+    <div class="opciones">
+        <h2>CUEVA <i class="fas fa-caret-up"></i></h2>
+        <p> Gana entre 5 y 10 monedas</p>
+        <br>
+        <form action='/process_money' method='post'>
+            {% csrf_token %}
+            <input type='hidden' name='opcion' value='cueva'>
+            <button type='submit'>Intenta!!!</button>
+        </form>
+    </div>
+
+    <div class="opciones">
+        <h2>CASA <i class="fas fa-house-user"></i></h2>
+        <p> Gana entre 2 y 5 monedas</p>
+        <br>
+        <form action='/process_money' method='post'>
+            {% csrf_token %}
+            <input type='hidden' name='opcion' value='casa'>
+            <button type='submit'>Suerte!!!</button>
+        </form>
+    </div>
+
+    <div class="opciones">
+        <h2>CASINO <i class="fas fa-dice"></i></h2>
+        <p> Gana/pierde entre 0 y 50 monedas</p>
+        <br>
+        <form action='/process_money' method='post'>
+            {% csrf_token %}
+            <input type='hidden' name='opcion' value='casino'>
+            <button type='submit'>ALL IN!!!</button>
+        </form>
+    </div>
+
+    <div class="reset">
+        <button type="button" onclick="resetear()">
+            <a href="reset">Resetear</a>
+        </button>
+    </div>
+
+
+    <div class="log">
+        <h2>Historico de eventos</h2>
+
+        {% for log in request.session.log reversed%}
+        <p class='{{log.pcolor}}'>{{log.ptexto}}</p>
+        {% endfor %}
+
+
+    </div>
+
+</body>
+
+</html>
